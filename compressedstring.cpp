@@ -1,27 +1,3 @@
-/*
- * compressedstring.cpp
- * 
- * Copyright 2012 LIJIN C <lij@ubuntu>
- * 
- * This program is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this program; if not, write to the Free Software
- * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
- * MA 02110-1301, USA.
- * 
- * It compresses a text file..
- * 
- * 
- */
 #include <iostream>
 #include <string.h>
 #include <stdlib.h>
@@ -41,7 +17,7 @@ int main(int argc, char *argv[]) {
 	vector<char> myvector;
 	vector<char>::iterator it; 
 	char letter[1],str[10],cfname[20];
-	int length=0,count=1;
+	int length=0,count=0;
 	int inputfile=open(argv[1],O_RDONLY);
 	if(inputfile<0)
 	{
@@ -68,11 +44,12 @@ int main(int argc, char *argv[]) {
 			j+=1;
 		}
 		i+=count;
+		i+=1;
+		if(count!=0)
+		{
 		int len=sprintf(str,"%d",count);
 		writefile=write(outfile,str,len);
-		count=1;
+		count=0;
+		}
 	}
-
-
-	
 }
